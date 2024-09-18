@@ -5,7 +5,7 @@ function rsignUp() {
     var password = document.getElementById('signUpPassword').value;
     signUp(email, password);
 }
-
+//hello
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
