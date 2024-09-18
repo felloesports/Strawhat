@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Sachin">
+  <meta property="og:title" content="Sachin Sharma portfolio">
+  <meta property="og:type" content="Website">
+  <title>Sachin Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  
+ 
+  <!--
+    - icon link
+  --> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />      
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body >
+
+  <!--
+    - #MAIN
+  -->
+
+
+  <section class="preloader" id="loader">
+  <div class="loader">
+    <span></span>
+    <div id="dot-1" class="dot"></div>
+    <div id="dot-2" class="dot"></div>
+    <div id="dot-3" class="dot"></div> 
+    <div id="dot-4" class="dot"></div>
+    <div id="dot-5" class="dot"></div>
+  </div>
+</section>
+<div id="content" style="display: none;">
+<section class="login-page">
+  <div class="wrapper">
+    <div class="card-switch">
+        <label class="switch">
+           <input type="checkbox" class="toggle">
+           <span class="slider"></span>
+           <span class="card-side"></span>
+           <div class="flip-card__inner">
+              <div class="flip-card__front">
+                <div class="heading">Log In</div>
+                <div class="form">
+                  <input class="input" placeholder="E-mail" type="email" id="signInEmail" required>
+                  <input class="input" placeholder="Password" type="password" id="signInPassword" required>
+                  <span class="forgot-password"><a href="admin.html">Admin page</a></span>
+                  <button class="login-button" onclick="rsignIn()">Log in</button> 
+                </div>
+              </div>
+              <div class="flip-card__back">
+                <div class="heading">Sign Up</div>
+                <div class="form">
+                  <input class="input" placeholder="E-mail" type="email" id="signUpEmail" required>
+                  <input class="input" placeholder="Password" type="password" id="signUpPassword" required>
+                  <button class="login-button" onclick="rsignUp()">Sign Up</button>
+                </div>
+              </div>
+           </div>
+        </label>
+    </div>   
+</div>
+</section>
+
+<section class="homepage">
+
+  <div style="position: sticky; top: 0; margin-top: -80px; z-index: 1001;" >
+  <div class="botcontainer">
+    <button class="bot_call"  onclick="showbot()" id="botToggle">
+      <div class="sign">
+      <i class="fa-solid fa-robot" style="transform: translateY(-2px);"></i>
+      <i class="fas fa-times" style="display: none; color: red;"></i>
+      </div>
+      <div class="text">Chatbot</div>
+    </button>
+    <div id="curved-corner-topleft"></div>
+  </div>
+  <div id="curved-corner-topleft"></div>
+</div>
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+    <a class="back-to-top active" style="display: none;" id="goToTopBtn">BACK TO TOP</a>
+
+    <aside class="sidebar" data-sidebar>
+      
+      <div class="sidebar-info">
+       
+        <figure class="avatar-box">
+        <div class="avatar-container">
+            <img id="avatar" src="./assets/images/my-avatar.png" alt="Sachin Sharma" width="100">
+        </div>
+    </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Sachin Sharma ">Sachin Sharma</h1>
+
+          <p class="title" id="typewriter"></p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:sachinsthug@gmail.com" class="contact-link">Sachinsthug@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+919079982271" class="contact-link">+91 9079982271</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="2005-07-22">July 22, 2005</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Jaipur, Rajasthan, India</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+         
+        </ul>
+        <h5 class="loader">Loading...</h5>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>Home</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link >Project</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Blog</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+        <span></span>
+        </ul>
+        
+      </nav>
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="home">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+        <section class="botbox" style="margin-top: 10px;">
+            <iframe id ="ibot" 
+                src="https://www.chatbase.co/chatbot-iframe/wFfpOiONfEVGa46eVicxy"
+                frameborder="0"
+           ></iframe>
+        </section>
+        <section class="about-text">
+          <p>Hi, my name is <strong>Sachin Sharma</strong> and I am from Jaipur, India. I'm a <strong>Frontend web developer</strong> and a first-year university student pursuing <strong>BS in Computer Science</strong> at JECRC University, Jaipur.</p>
+          <p>I love to create projects with beautiful designs and put my own twists on it, you can check out some of my work in the projects section.</p>
+          <p>I am <strong>open</strong> to new collaborations or work where I can contribute and grow. Feel free to connect with me, links are in the footer. Apart from coding I love to make discord servers, designs, and do photography in my spare time.</p>
+          <a href="https://drive.google.com/file/d/1Wk-mSLix41enDjLjUkr8E3X20metdX7w/view?usp=sharing" target="_blank" title="Goes to resume" style="text-decoration: none;"><button><i class="fa fa-search" aria-hidden="true"></i><span>View Resume</span></button></a>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What i'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg
+                " alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web design</h4>
+
+                <p class="service-item-text">
+                  The most modern and high-quality design made at a professional level.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Information icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Information</h4>
+
+                <p class="service-item-text">
+                  High-quality development of sites at the professional level.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Mobile apps</h4>
+
+                <p class="service-item-text">
+                  Professional development of applications for iOS and Android.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Photography</h4>
+
+                <p class="service-item-text">
+                  I make high-quality photos of any category at a professional level.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials
+        -->
+
+       <section class="">
+
+        <h3 class="h3 testimonials-title" style="text-align: center;"><strong style="text-shadow: 0 0 3px white; display: inline-flex; gap: 5px;">
+        <span>S</span>
+        <span>K</span>
+        <span>I</span>
+        <span>L</span>
+        <span>L</span>
+        <span>S</span>
+        </strong></h3>
+        <h1 class="cs">Programming Skills</h1>
+        <ul class="testimonials-list has-scrollbar">
+          <li class="skills green"><i class="fa-4x fa-brands fa-python" aria-hidden="true"><span style="font-size: .6rem;">Python</span></i></li>
+          <li class="skills green"><i class="fa-4x devicon-cplusplus-plain"><span>C++</span></i></li>
+          <li class="skills green"><i class="fa-4x devicon-css3-plain" aria-hidden="true"><span>Css3</span></i></li>
+          <li class="skills green"><i class="fa-4x devicon-html5-plain" aria-hidden="true"><span>Html</span></i></li>
+          <li class="skills yellow"><i class="fa-4x devicon-c-plain" aria-hidden="true"><span>C</span></i></li>
+          <li class="skills yellow"><i class="fa-4x fa-brands fa-java" aria-hidden="true"><span>Java</span></i></li>
+          <li class="skills yellow"><i class="fa-4x devicon-javascript-plain" aria-hidden="true"><span>Javascript</span></i></li>
+          <li class="skills yellow"><i class="fa-4x devicon-mysql-original" aria-hidden="true"><span>MySql</span></i></li>
+          <li class="skills red"><i class="fa-4x devicon-csharp-plain" aria-hidden="true"><span>C#</span></i></li>
+          <li class="skills red"><i class="fa-4x devicon-react-original" aria-hidden="true"><span>React</span></i></li>
+        </ul>
+  
+      <br>
+      <hr>
+      <br>
+      <h1 class="cs">Visual Media Skills</h1>
+      <ul class="testimonials-list has-scrollbar" style="gap: 2em;">
+        <li class="skills green"><i class="fa-4x devicon-photoshop-plain" aria-hidden="true"><span>Photoshop</span></i></li>
+        <li class="skills green"><i class="fa-4x devicon-aftereffects-plain"><span>Aftereffects</span></i></li>
+        <li class="skills green"><i class="fa-4x devicon-canva-original" aria-hidden="true"><span>Canva</span></i></li>
+        <li class="skills yellow"><i class="fa-4x devicon-premierepro-plain" aria-hidden="true"><span>Premierepro</span></i></li>
+        <li class="skills red"><i class="fa-4x devicon-blender-original" aria-hidden="true"><span>Blender</span></i></li>
+     </ul>
+      <br>
+      <hr>
+      <br>
+      <h1 class="cs">MS-Office Skills</h1>
+      <ul class="testimonials-list has-scrollbar" style="gap: 2em;">
+          <div class="skills green" ><img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTkuNSAyOWgxOWMuMjc1IDAgLjUtLjIyNS41LS41VjloLTQuNWMtLjgyNyAwLTEuNS0uNjczLTEuNS0xLjVWM0g5LjVjLS4yNzUgMC0uNS4yMjUtLjUuNXYyNWMwIC4yNzUuMjI1LjUuNS41eiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0yOC4yOTMgOEwyNCAzLjcwN1Y3LjVjMCAuMjc1LjIyNS41LjUuNWgzLjc5M3oiLz48cGF0aCBvcGFjaXR5PSIuNjQiIGZpbGw9IiM2MDVFNUMiIGQ9Ik0yOS41NiA3Ljg1NGwtNS40MTQtNS40MTVBMS41MSAxLjUxIDAgMDAyMy4wODYgMkg5LjVDOC42NzMgMiA4IDIuNjczIDggMy41djI1YzAgLjgyNy42NzMgMS41IDEuNSAxLjVoMTljLjgyNyAwIDEuNS0uNjczIDEuNS0xLjVWOC45MTRjMC0uNC0uMTU2LS43NzctLjQ0LTEuMDZ6TTI0IDMuNzA3TDI4LjI5MyA4SDI0LjVhLjUwMS41MDEgMCAwMS0uNS0uNVYzLjcwN3pNMjguNSAyOWgtMTlhLjUwMS41MDEgMCAwMS0uNS0uNXYtMjVjMC0uMjc1LjIyNS0uNS41LS41SDIzdjQuNWMwIC44MjcuNjczIDEuNSAxLjUgMS41SDI5djE5LjVjMCAuMjc1LS4yMjUuNS0uNS41eiIvPjxwYXRoIGZpbGw9IiMxMDNGOTEiIGQ9Ik0yNS41IDIySDE3djFoOC41YS41LjUgMCAwMDAtMXoiLz48cGF0aCBmaWxsPSIjMTg1QUJEIiBkPSJNMjUuNSAxOUgxN3YxaDguNWEuNS41IDAgMDAwLTF6Ii8+PHBhdGggZmlsbD0iIzJCN0NEMyIgZD0iTTI1LjUgMTZIMTd2MWg4LjVhLjUuNSAwIDAwMC0xeiIvPjxwYXRoIGZpbGw9IiM0MUE1RUUiIGQ9Ik0yNS41IDEzSDE3djFoOC41YS41LjUgMCAwMDAtMXoiLz48cGF0aCBmaWxsPSIjMTg1QUJEIiBkPSJNMy41IDI1aDExYTEuNSAxLjUgMCAwMDEuNS0xLjV2LTExYTEuNSAxLjUgMCAwMC0xLjUtMS41aC0xMUExLjUgMS41IDAgMDAyIDEyLjV2MTFBMS41IDEuNSAwIDAwMy41IDI1eiIvPjxwYXRoIGZpbGw9IiNGOUY3RjciIGQ9Ik03LjIxNSAyMC43M2guMDIyQzcuMjQ2IDIwLjYxNSA4LjM3IDE1IDguMzcgMTVoMS4zMDZzMS4xNCA1LjM1MyAxLjE3NSA1LjcyaC4wMTdjLjAxNS0uMjUyLjk0NC01LjcyLjk0NC01LjcySDEzbC0xLjQ2MiA3aC0xLjM4OXMtMS4xNTMtNS41My0xLjE2Mi01LjYyOGgtLjAxOEM4Ljk1OSAxNi40ODUgNy44ODYgMjIgNy44ODYgMjJoLTEuNDFMNSAxNWgxLjIxczEgNS42MDcgMS4wMDUgNS43M3oiLz48L3N2Zz4="><span>Word</span></div>
+          <div class="skills green" ><img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTkuNSAyOWgxOWMuMjc1IDAgLjUtLjIyNS41LS41VjloLTQuNWMtLjgyNyAwLTEuNS0uNjczLTEuNS0xLjVWM0g5LjVjLS4yNzUgMC0uNS4yMjUtLjUuNXYyNWMwIC4yNzUuMjI1LjUuNS41eiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0yOC4yOTMgOEwyNCAzLjcwN1Y3LjVjMCAuMjc1LjIyNS41LjUuNWgzLjc5M3oiLz48cGF0aCBvcGFjaXR5PSIuNjQiIGZpbGw9IiM2MDVFNUMiIGQ9Ik0yOS41NiA3Ljg1NGwtNS40MTQtNS40MTVBMS41MSAxLjUxIDAgMDAyMy4wODYgMkg5LjVDOC42NzMgMiA4IDIuNjczIDggMy41djI1YzAgLjgyNy42NzMgMS41IDEuNSAxLjVoMTljLjgyNyAwIDEuNS0uNjczIDEuNS0xLjVWOC45MTRjMC0uNC0uMTU2LS43NzctLjQ0LTEuMDZ6TTI0IDMuNzA3TDI4LjI5MyA4SDI0LjVhLjUwMS41MDEgMCAwMS0uNS0uNVYzLjcwN3pNMjguNSAyOWgtMTlhLjUwMS41MDEgMCAwMS0uNS0uNXYtMjVjMC0uMjc1LjIyNS0uNS41LS41SDIzdjQuNWMwIC44MjcuNjczIDEuNSAxLjUgMS41SDI5djE5LjVjMCAuMjc1LS4yMjUuNS0uNS41eiIvPjxwYXRoIGZpbGw9IiNFRDZDNDciIGQ9Ik0yMSAxOGwtMS0xaC0ybC0xIDF2Mi45NzNDMTcuOTExIDIyLjE5NyAxOS4zNTcgMjMgMjEgMjNhNSA1IDAgMDA1LTVoLTV6Ii8+PHBhdGggZmlsbD0iI0ZGOEY2QiIgZD0iTTE3IDE1LjAyN1YxOGg0di01Yy0xLjY0MyAwLTMuMDg5LjgwMy00IDIuMDI3eiIvPjxwYXRoIGZpbGw9IiNGRkM3QjUiIGQ9Ik0yMiAxMmE1IDUgMCAwMTUgNWgtNXYtNXoiLz48cGF0aCBmaWxsPSIjQzQzRTFDIiBkPSJNMy41IDI1aDExYTEuNSAxLjUgMCAwMDEuNS0xLjV2LTExYTEuNSAxLjUgMCAwMC0xLjUtMS41aC0xMUExLjUgMS41IDAgMDAyIDEyLjV2MTFBMS41IDEuNSAwIDAwMy41IDI1eiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik05LjUyNCAxNC4wMmMuOTIxIDAgMS42MjUuMjE0IDIuMTE1LjY0LjQ4OC40MjcuNzMzIDEuMDQ1LjczMyAxLjg1NCAwIC41Mi0uMTE2Ljk4Ni0uMzU4IDEuMzktLjI0MS40MDUtLjU5LjcxNC0xLjAzNi45MzgtLjQ0Ni4yMjUtLjk1Ny4zNDItMS41NDQuMzQySDcuOTY3TDcuOTYyIDIyaC0xLjE4di03Ljk4aDIuNzQyek03Ljk2MiAxOGgxLjYxNWMuNTAzIDAgLjg4NS0uMTE4IDEuMTQzLS4zNTMuMjU4LS4yMzYuNDQxLS42NTUuNDQxLTEuMTA4IDAtLjg3OS0uNTQ4LTEuNTM5LTEuNTM3LTEuNTM5SDcuOTYydjN6Ii8+PC9zdmc+"><span>PowerPoint</span></div>
+          <div class="skills green" ><img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTkuNSAyOWgxOWMuMjc1IDAgLjUtLjIyNS41LS41VjloLTQuNWMtLjgyNyAwLTEuNS0uNjczLTEuNS0xLjVWM0g5LjVjLS4yNzUgMC0uNS4yMjUtLjUuNXYyNWMwIC4yNzUuMjI1LjUuNS41eiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0yOC4yOTMgOEwyNCAzLjcwN1Y3LjVjMCAuMjc1LjIyNS41LjUuNWgzLjc5M3oiLz48cGF0aCBvcGFjaXR5PSIuNjQiIGZpbGw9IiM2MDVFNUMiIGQ9Ik0yOS41NiA3Ljg1NGwtNS40MTQtNS40MTVBMS41MSAxLjUxIDAgMDAyMy4wODYgMkg5LjVDOC42NzMgMiA4IDIuNjczIDggMy41djI1YzAgLjgyNy42NzMgMS41IDEuNSAxLjVoMTljLjgyNyAwIDEuNS0uNjczIDEuNS0xLjVWOC45MTRjMC0uNC0uMTU2LS43NzctLjQ0LTEuMDZ6TTI0IDMuNzA3TDI4LjI5MyA4SDI0LjVhLjUwMS41MDEgMCAwMS0uNS0uNVYzLjcwN3pNMjguNSAyOWgtMTlhLjUwMS41MDEgMCAwMS0uNS0uNXYtMjVjMC0uMjc1LjIyNS0uNS41LS41SDIzdjQuNWMwIC44MjcuNjczIDEuNSAxLjUgMS41SDI5djE5LjVjMCAuMjc1LS4yMjUuNS0uNS41eiIvPjxwYXRoIGZpbGw9IiMxMzRBMkMiIGQ9Ik0yNSAyM2gtMmExIDEgMCAxMTAtMmgyYTEgMSAwIDExMCAyeiIvPjxwYXRoIGZpbGw9IiMxODVDMzciIGQ9Ik0yMCAyM2gtMmExIDEgMCAxMTAtMmgyYTEgMSAwIDExMCAyeiIvPjxwYXRoIGZpbGw9IiMyMUEzNjYiIGQ9Ik0yNSAxOWgtMmExIDEgMCAxMTAtMmgyYTEgMSAwIDExMCAyeiIvPjxwYXRoIGZpbGw9IiMxMDdDNDEiIGQ9Ik0yMCAxOWgtMmExIDEgMCAxMTAtMmgyYTEgMSAwIDExMCAyeiIvPjxwYXRoIGZpbGw9IiMzM0M0ODEiIGQ9Ik0yNSAxNWgtMmExIDEgMCAxMTAtMmgyYTEgMSAwIDExMCAyeiIvPjxwYXRoIGZpbGw9IiMyMUEzNjYiIGQ9Ik0yMCAxNWgtMmExIDEgMCAxMTAtMmgyYTEgMSAwIDExMCAyeiIvPjxwYXRoIGZpbGw9IiMxMDdDNDEiIGQ9Ik0zLjUgMjVoMTFhMS41IDEuNSAwIDAwMS41LTEuNXYtMTFhMS41IDEuNSAwIDAwLTEuNS0xLjVoLTExQTEuNSAxLjUgMCAwMDIgMTIuNXYxMUExLjUgMS41IDAgMDAzLjUgMjV6Ii8+PHBhdGggZmlsbD0iI0Y5RjdGNyIgZD0iTTYgMjJsMi4xNzQtNC4wMUw2LjE4MiAxNGgxLjYwMmwxLjA4NyAyLjU0OWMuMS4yNDIuMTY5LjQyMy4yMDYuNTQyaC4wMTVjLjA3MS0uMTk0LjE0Ni0uMzgyLjIyNC0uNTY0TDEwLjQ3OCAxNGgxLjQ3bC0yLjA0MiAzLjk2N0wxMiAyMmgtMS41NjVMOS4xOCAxOS4yYTIuNTY4IDIuNTY4IDAgMDEtLjE1LS4zNzVoLS4wMThhMS45MyAxLjkzIDAgMDEtLjE0NS4zNjNMNy41NzQgMjJINnoiLz48L3N2Zz4="><span>Excel</span></div>
+      </ul>
+    </section>
+
+
+        <!--
+          - testimonials modal
+        -->
+
+        
+        <!--
+          - clients
+        -->
+      <hr>
+      
+      <section class="clients">
+        <br>
+        <h1 style="color: rgb(255, 255, 255); text-align: center;">INTERNSHIPS</h1>
+          <div class="cardcontainer has-scrollbar">
+         
+            <div class="cardm">
+                <div class="card">
+                  <svg class="company" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" xml:space="preserve"> 
+                    <image id="image0"  width="100" height="100" x="0" y="0" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAY1BMVEUApez///8An+sAnevi9P0AousAoet9yPP6//8ApuxMt/Ct3Pf5/f/p9v2x3fjP6vpVuvDc8Pwsru7x+v6f1vZgvfGIzfT0+/6d1Pa84vmT0PWu3Pd2xfLS7Pvd8vzJ5/o8su8BqlLQAAAF8UlEQVR4nO2c7XqqOhBGITajUEVE8INi5f6vcov1tB5LQiZAkrPPu363ynoSw2QykygCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP4/SCIhxKJDdBBJ6fuZ7sheuJ9CIsnrbLdZxR2r1ebzci3rqk0E+daUyz4a1mORaE+7uJf15rws/Foueh9sI8w/QST1pl/v+9OyVPhz7Dd8MzYUxVmv95A8SJpTQ8M4Q1FcTfw61rWnhWeMoYw+TP06jg1j7k+H3jDR/ato1hzBG5fCw1S1HkOZGE/QJw7uh9HWUFTcAfziErkeRktDUVr53VinjhXtDOliK3jD8YJjYyiTgVf8ALVTRQtDmexHCcbxu0tFmzEcN4IdmUNFviEpgmwWDkeRbSjeJxC8LTfOVlSuoawmEbwGPIZ2L/oXLuH+DkU2heAu4LW0mEJw49CPayhsou1X9onTjSLP0GQI15vPG+qgYF243QmzDGkg3t6VVRt95RIFFXl97VuWWsdbfZah0IVr+8NL6lCSkNWvae16a8EylKlG8EB9jy5fM1WV810+x5BOSr+NOj8h2refv3MXynzDMRTKXeEm0vy45M922UMSgzdLjyrDgeVRPEK9k49kG8dQ+a4Y3CnQ/Rfscs/0A8NQHXRrk453KI/jsxdBluFBIXg2WD5o6TQYfYJhqFxKK5N3uLfzJ46hau/r68zFDI6hYufEOYrzwASG5kdxXpjAcL9w/tQcOIaqncXwy8InU6ylS9/FCFqmeB9ugl5MJ4lpnGbpuXDi0lZl6GXPYArHMFEaxpn3wiAlrB2w5khmX3ksmdHCMtSWzrw1MsiBZO2AlzrDOD5+pIvwJFm5tuF06eq8LEiEUpV4h5dNfOv969eh3JZNmpD/qsQvWIbKd34P+8upSkJYfXhZfc37opdLXXiX5BmqthcadgfPI8k8XeMO4p1z69ORaahJe+vYpv7COu4pNxktpz2OrS9HdqWC9Smwr9CVXalA1sUYqxAraPugxlYxPvuIdSyqvuxHMT62YZ+u/QO19pVt7meqVX2pVKa/h3GeDrCtEW6t6/dcK9rWeUvR2FaZOj7Kt++3kLS0dCzm13piVEcJNVYRjtuTxHFdQXKR2pTyHVzO07GdXZKihl/sNqfRK2MNbxBRXu5WHMN3h4M4gWF0L/CK0sPH1jQSWM0j08s0hh3ypimoSJeZwavy4C5Anc7wQScaVZmyuGj0F3CZ3PCOJKq2WkV378R5DKMu6NEGdnWw3QgMpKjVhltn03RGw1t8nisN186WmlkNdfmAdppvGGZeQ01/Bu9SgxHMbKhOIZeulpq5DUnV0G5S0DgJcxtKVXmDs9anuQ0joYhunEU1sxuSYm+1/3sMFdVw67/eMHZV0QjDXjh3zSiLcEKepdQyWghV9RshrzSyWMcbY0PVeeNnwIZRlwh+03U6PUGqHdQ23JhGfk27vdltOqTKi4cbl/5cqWByUEbKGqNg9xbPvc7XZGgcNKf+zhI13H78f6/9pd6RCmWe2F1tOLNb/dfJaNYK1bPKhebEPwvTUPTVC33WfdcGShKVLteWBpmnEcp2hKwp5P2yyxvUXYIp81Kb4XfYZ8PpKNGWmRx32anJ07RqDuV58FgxyKz+iCKTX7jLJTIMtc34XFwekZoa2tez9eC0Y9HUMJnk5p0HucviL0PDUVfQveK2Tcp4DMfe0fb04WHW04y9Z++HtdtyGsZaGllWB7/iLpphGt5+i/pTXUOcX9/CitomuIwu7PtpIjHQ2jVMHnoFLRWj1hsfJcLcHbCUI2bqm9trzB7wb4ZsbddUT/3QFrk2dXZJxzEP//aWbyjiT9WP/8LtLU9QwXP01xNkf/ZESW0cqW5Tn3eD2J+uEeVngy3VOvPam3dbGuNVD2bHJpIoLfWlltfG+R3sv6BeTP+7uxsxPZwvPeUIx+0ppUC6nUfSVZRS0uZNfSrf75R1kxbBNHNPxj1R+iDM2xUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC5/AOxbSek69WD9AAAAAElFTkSuQmCC"></image>
+                  </svg>
+                  <span class="main-text">Intershala</span>
+                  <div class="mainsub" style="padding-left:5px">Student Partner</div>
+              
+                </div>
+              
+                <div class="card2">
+                  <div class="upper">
+                    <div class="humidity">
+                      <div class="aqitext">Start<br>26 Jun 2024</div>
+                    </div>
+              
+                    <div class="air">
+                    <div class="aqitext">End<br>07 Aug 24</div>
+                    </div>
+                    <div class="countdown-el days-c" id="days-text">
+                          <span>Days Left</span>
+                          <p class="big-text" id="days1">0</p>
+                      </div>
+                  </div>
+              
+                  <div class="lower">
+              
+                    <div class="realfeel">
+                      <svg class="rfsvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0"
+                        href="https://toppng.com/uploads/preview/lighthouse-experience-icon-experience-icon-11553444674upcv3lx9aw.png"></image>
+                      </svg>
+                      <div class="realfeeltext">Experience<br>1 M</div>
+                      
+                    </div>
+              
+                    <div class="pressure">
+                      <svg class="pressuresvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0" 
+                        href="https://cdn-icons-png.flaticon.com/512/3000/3000745.png"></image>
+                      </svg>
+                      <div class="realfeeltext">Certificate<br>2</div>
+                    </div>
+                    <div id="status1" class="card3">
+                    In Progress
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="cardm">
+                <div class="card">
+                  <svg class="company" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" xml:space="preserve">  <image id="image0" width="100" height="100" x="0" y="0" href="https://unifiedmentor.podia.com/content-assets/public/x3kyxehqblxffoz56m5l3cu3l7y8"></image>
+                  </svg>
+                  <span class="main-text">Unified Mentor</span>
+                  <div class="mainsub" style="padding-left:5px">Web Devlop Intern</div>
+              
+                </div>
+              
+                <div class="card2">
+                  <div class="upper">
+                    <div class="humidity">
+                      <div class="aqitext">Start<br>25 Jun 2024</div>
+                    </div>
+              
+                    <div class="air">
+                    <div class="aqitext">End<br>25 July 2024</div>
+                    </div>
+                    <div class="countdown-el days-c" id="days-text">
+                          <span>Days Left</span>
+                          <p class="big-text" id="days2">0</p>
+                      </div>
+                  </div>
+              
+                  <div class="lower">
+                    <div class="aqi">
+                      <svg class="aqisvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0" 
+                        href="https://cdn-icons-png.flaticon.com/256/5956/5956592.png"></image>
+                      </svg>
+                      <div class="realfeeltext">Peojects<br>2</div>
+                    </div>
+              
+                    <div class="realfeel">
+                      <svg class="rfsvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0"
+                        href="https://toppng.com/uploads/preview/lighthouse-experience-icon-experience-icon-11553444674upcv3lx9aw.png"></image>
+                      </svg>
+                      <div class="realfeeltext">Experience<br>1 M</div>
+                      
+                    </div>
+              
+                    <div class="pressure">
+                      <svg class="pressuresvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0" 
+                        href="https://cdn-icons-png.flaticon.com/512/3000/3000745.png"></image>
+                      </svg>
+                      <div class="realfeeltext">Certificate<br>1</div>
+                    </div>
+                    <div id="status2" class="card3">
+                    In Progress
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cardm">
+                <div class="card">
+                  <svg class="company" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" xml:space="preserve">  <image id="image0" width="100" height="100" x="0" y="0" href="https://media.licdn.com/dms/image/C4E0BAQEBQ0ItUQd9GA/company-logo_200_200/0/1662036891199/devtown_in_logo?e=1728518400&v=beta&t=tWHR3qZW2bITV_ewjtELGPeTZ4nZrsNAlS5PXQnebyg"></image>
+                  </svg>
+                  <span class="main-text">Devtown</span>
+                  <div class="mainsub" style="padding-left:5px">Data Science</div>
+              
+                </div>
+              
+                <div class="card2">
+                  <div class="upper">
+                    <div class="humidity">
+                      <div class="aqitext">Start<br>08 July 2024</div>
+                    </div>
+              
+                    <div class="air">
+                    <div class="aqitext">End<br>07 Aug 2024</div>
+                    </div>
+                    <div class="countdown-el days-c" id="days-text">
+                          <span>Days Left</span>
+                          <p class="big-text" id="days3">0</p>
+                      </div>
+                  </div>
+              
+                  <div class="lower">
+                    <div class="aqi">
+                      <svg class="aqisvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0" 
+                        href="https://cdn-icons-png.flaticon.com/256/5956/5956592.png"></image>
+                      </svg>
+                      <div class="realfeeltext">Peojects<br>1</div>
+                    </div>
+              
+                    <div class="realfeel">
+                      <svg class="rfsvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0"
+                        href="https://toppng.com/uploads/preview/lighthouse-experience-icon-experience-icon-11553444674upcv3lx9aw.png"></image>
+                      </svg>
+                      <div class="realfeeltext">Experience<br>1 M</div>
+                      
+                    </div>
+              
+                    <div class="pressure">
+                      <svg class="pressuresvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0" 
+                        href="https://cdn-icons-png.flaticon.com/512/3000/3000745.png"></image>
+                      </svg>
+                      <div class="realfeeltext">Certificate<br>1</div>
+                    </div>
+                    <div id="status3" class="card3">
+                    In Progress
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cardm">
+                <div class="card">
+                  <svg class="company" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" xml:space="preserve">  <image id="image0" width="100" height="100" x="0" y="0" href="https://static.wixstatic.com/media/3bcbe6_5bfd54c84b854387a2e2d6521208911c~mv2.png/v1/fill/w_360,h_278,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Purple%20LOGO.png"></image>
+                  </svg>
+                  <span class="main-text">EVOASTRA</span>
+                  <div class="mainsub" style="padding-left:5px">Data Scientist
+                    Intern</div>
+              
+                </div>
+              
+                <div class="card2">
+                  <div class="upper">
+                    <div class="humidity">
+                      <div class="aqitext">Start<br>25 Jul 2024</div>
+                    </div>
+              
+                    <div class="air">
+                    <div class="aqitext">End<br>25 Aug 2024</div>
+                    </div>
+                    <div class="countdown-el days-c" id="days-text">
+                          <span>Days Left</span>
+                          <p class="big-text" id="days4">0</p>
+                      </div>
+                  </div>
+              
+                  <div class="lower">
+                    <div class="aqi">
+                      <svg class="aqisvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0" 
+                        href="https://cdn-icons-png.flaticon.com/256/5956/5956592.png"></image>
+                      </svg>
+                      <div class="realfeeltext">Peojects<br>2</div>
+                    </div>
+              
+                    <div class="realfeel">
+                      <svg class="rfsvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0"
+                        href="https://toppng.com/uploads/preview/lighthouse-experience-icon-experience-icon-11553444674upcv3lx9aw.png"></image>
+                      </svg>
+                      <div class="realfeeltext">Experience<br>1 M</div>
+                      
+                    </div>
+              
+                    <div class="pressure">
+                      <svg class="pressuresvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0" 
+                        href="https://cdn-icons-png.flaticon.com/512/3000/3000745.png"></image>
+                      </svg>
+                      <div class="realfeeltext">Certificate<br>1</div>
+                    </div>
+                    <div id="status4" class="card3">
+                    In Progress
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            
+                </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">Info</h2>
+        </header>
+  <section class="botbox">
+          <iframe id ="ibot"
+              src="https://www.chatbase.co/chatbot-iframe/wFfpOiONfEVGa46eVicxy"
+              frameborder="0"
+         ></iframe>
+      </section>
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+
+ 
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <details>
+                <summary><h4 class="h4 timeline-item-title">R.C Dukya International School</h4><span>2011 — 2021</span></summary>
+                <p class="timeline-text">
+                  R.C. Dukya International School was my first school, where I began my educational journey with supportive teachers and friends. It holds a special place in my heart for fostering my love of learning.
+                </p>
+              </details>
+            </li>
+            
+            <li class="timeline-item">
+              <details>
+                <summary><h4 class="h4 timeline-item-title">Oxford International School</h4><span>2021 — 2023</span></summary>
+                <p class="timeline-text">I completed my high-level education at Oxford International School, which played a crucial role in shaping my academic and personal growth. The experiences and knowledge I gained there have been invaluable.</p>
+              </details>
+            </li>
+          
+            <li class="timeline-item">
+              <details>
+                <summary><h4 class="h4 timeline-item-title">JECRC University</h4><span>2023 — 2027</span></summary>
+                <p class="timeline-text">I pursued my higher education at JECRC University, where I faced rigorous academic challenges. The demanding environment pushed me to excel and grow both personally and professionally.</p>
+              </details>
+            </li>
+          </ol>
+
+        </section>
+
+        <section class="skill">
+          <h3 class="h3 skills-title">My skills</h3>
+          <ul class="skills-list content-card">
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Web design</h5>
+                <data value="80">80%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" data-width="80"></div>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">IT skills</h5>
+                <data value="70">70%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" data-width="70"></div>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Programming</h5>
+                <data value="90">90%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" data-width="90"></div>
+              </div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Communication</h5>
+                <data value="50">50%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" data-width="50"></div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="project">
+      
+
+        <header>
+          <h2 class="h2 article-title">Projects</h2>
+        </header>
+        <section class="botbox">
+          <iframe id ="ibot"
+              src="https://www.chatbase.co/chatbot-iframe/wFfpOiONfEVGa46eVicxy"
+              frameborder="0"
+         ></iframe>
+      </section>
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn onclick="showsearchbar()">All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn onclick="showsearchbar()">Web Applications</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn onclick="showsearchbar()">Tools</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn onclick="showsearchbar()">Information</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn onclick="showsearchbar()">Games</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn id="otherButton" onclick="hidesearchbar()">Other</button>
+            </li>
+          </ul>
+
+          <div class="input-container">
+            <input placeholder="Search something..." id="searchInputp" class="input" name="text" type="search">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <rect fill="white"></rect> <path d="M7.25007 2.38782C8.54878 2.0992 10.1243 2 12 2C13.8757 2 15.4512 2.0992 16.7499 2.38782C18.06 2.67897 19.1488 3.176 19.9864 4.01358C20.824 4.85116 21.321 5.94002 21.6122 7.25007C21.9008 8.54878 22 10.1243 22 12C22 13.8757 21.9008 15.4512 21.6122 16.7499C21.321 18.06 20.824 19.1488 19.9864 19.9864C19.1488 20.824 18.06 21.321 16.7499 21.6122C15.4512 21.9008 13.8757 22 12 22C10.1243 22 8.54878 21.9008 7.25007 21.6122C5.94002 21.321 4.85116 20.824 4.01358 19.9864C3.176 19.1488 2.67897 18.06 2.38782 16.7499C2.0992 15.4512 2 13.8757 2 12C2 10.1243 2.0992 8.54878 2.38782 7.25007C2.67897 5.94002 3.176 4.85116 4.01358 4.01358C4.85116 3.176 5.94002 2.67897 7.25007 2.38782ZM9 11.5C9 10.1193 10.1193 9 11.5 9C12.8807 9 14 10.1193 14 11.5C14 12.8807 12.8807 14 11.5 14C10.1193 14 9 12.8807 9 11.5ZM11.5 7C9.01472 7 7 9.01472 7 11.5C7 13.9853 9.01472 16 11.5 16C12.3805 16 13.202 15.7471 13.8957 15.31L15.2929 16.7071C15.6834 17.0976 16.3166 17.0976 16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929L15.31 13.8957C15.7471 13.202 16 12.3805 16 11.5C16 9.01472 13.9853 7 11.5 7Z" clip-rule="evenodd" fill-rule="evenodd"></path> </g></svg>
+          </div>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item onclick="showsearchbar()">All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item onclick="showsearchbar()">Web Applications</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item onclick="showsearchbar()">Tools</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item onclick="showsearchbar()">Information</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item onclick="showsearchbar()">Games</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item onclick="hidesearchbar()">Other</button>
+              </li>
+            </ul>
+
+          </div>
+          <div class="container" style="display: none;">
+            <div class="controls">
+                <button id="backBtn" class="hidden">➜</button>
+                <input type="search" id="searchInput" placeholder="Search files...">
+                <select id="sortSelect">
+                    <option value="name">Name</option>
+                    <option value="type">Type</option>
+                </select>
+                <div class="view-toggle">
+                    <button id="listViewBtn" class="active"><i class="fas fa-list"></i></button>
+                    <button id="gridViewBtn"><i class="fas fa-th"></i></button>
+                </div>
+            </div>
+            <div id="advancedPath"></div>
+            <div id="fileSystem" class="list-view"></div>
+        </div>
+
+          <div id="loader">
+            <div class="loader-project">
+              <div class="square" ></div>
+              <div class="square"></div>
+              <div class="square last"></div>
+              <div class="square clear"></div>
+              <div class="square"></div>
+              <div class="square last"></div>
+              <div class="square clear"></div>
+              <div class="square "></div>
+              <div class="square last"></div>
+            </div>
+          </div>
+          <ul class="project-list" style="display: none;">
+            
+            <li class="project-item  active" data-filter-item data-category="web applications">
+              <a href="https://appsweb.netlify.app/webapps/budgetwebapp" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Budget App</h3>
+
+                <p class="project-category">Web Applications</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web applications">
+              <a href="https://appsweb.netlify.app/webapps/calculator" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-10.png" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Calculator</h3>
+
+                <p class="project-category">Web Applications</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web applications">
+              <a href="https://appsweb.netlify.app/webapps/weatherapp" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-11.png" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Weather App</h3>
+
+                <p class="project-category">Web Applications</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="games">
+              <a href="https://gamesby.netlify.app/games%20/cointossweb" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-12.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Coin Toss</h3>
+
+                <p class="project-category">Games</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="games">
+              <a href="https://gamesby.netlify.app/games%20/dicegame/" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-13.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Dice Game</h3>
+
+                <p class="project-category">Games</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="games">
+              <a href="https://gamesby.netlify.app/games%20/numberguessinggame/" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-14.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Number guessing game</h3>
+
+                <p class="project-category">Games</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="games">
+              <a href="https://gamesby.netlify.app/games%20/quizgame" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-15.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Quiz</h3>
+
+                <p class="project-category">Games</p>
+
+              </a>
+            </li>
+            <li class="project-item  active" data-filter-item data-category="games">
+              <a href="https://gamesby.netlify.app/games%20/rockpaperscissorsgame" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-16.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Rock Paper Scissor</h3>
+
+                <p class="project-category">Games</p>
+
+              </a>
+            </li> <li class="project-item  active" data-filter-item data-category="games">
+              <a href="https://gamesby.netlify.app/games%20/snakegame/" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-17.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Snake game</h3>
+
+                <p class="project-category">Games</p>
+
+              </a>
+            </li>
+
+          </li> <li class="project-item  active" data-filter-item data-category="games">
+            <a href="https://gamesby.netlify.app/games%20/tictactoe/" target="_blank">
+
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+
+                <img src="./assets/images/project-18.png" alt="orizon" loading="lazy">
+              </figure>
+
+              <h3 class="project-title">Tic tac toe</h3>
+
+              <p class="project-category">Games</p>
+
+            </a>
+          </li>
+
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/agecalculator/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/age-calculator.jpg" alt="Age Calculator" loading="lazy">
+              </figure>
+              <h3 class="project-title">Age Calculator</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/currencyconvertor/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/currency-converter.png" alt="Currency Convertor" loading="lazy">
+              </figure>
+              <h3 class="project-title">Currency Convertor</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/digitalclock/" target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/digital-clock.jpg" alt="Digital Clock" loading="lazy">
+              </figure>
+              <h3 class="project-title">Digital Clock</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/githubprofilefinder/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/github-profile-finder.jpg" alt="Github Profile Finder" loading="lazy">
+              </figure>
+              <h3 class="project-title">Github Profile Finder</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/imageresizer/" target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/image-resizer.jpg" alt="Image Resizer" loading="lazy">
+              </figure>
+              <h3 class="project-title">Image Resizer</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/imagesearchwebsite/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/image-search-website.jpg" alt="Image Search Website" loading="lazy">
+              </figure>
+              <h3 class="project-title">Image Search Website</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/memegenerator/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/meme-generator.png" alt="Meme Generator" loading="lazy">
+              </figure>
+              <h3 class="project-title">Meme Generator</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/passwordgenerator/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/password-generator.jpg" alt="Password Generator" loading="lazy">
+              </figure>
+              <h3 class="project-title">Password Generator</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/qrgenerator/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/qr-generator.jpg" alt="QR Generator" loading="lazy">
+              </figure>
+              <h3 class="project-title">QR Generator</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/quotes/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/quotes.png" alt="Quotes" loading="lazy">
+              </figure>
+              <h3 class="project-title">Quotes</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/screenflashlight/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/screen-flash-light.jpg" alt="Screen Flash Light" loading="lazy">
+              </figure>
+              <h3 class="project-title">Screen Flash Light</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/stickynotes/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/sticky-notes.jpg" alt="Sticky Notes" loading="lazy">
+              </figure>
+              <h3 class="project-title">Sticky Notes</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/stopwatch/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/stopwatch.jpg" alt="Stopwatch" loading="lazy">
+              </figure>
+              <h3 class="project-title">Stopwatch</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+          <li class="project-item tools active" data-filter-item data-category="tools">
+            <a href="https://toolsonweb.netlify.app/tools/todoapp/"  target="_blank">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/todo-app.png" alt="Todo App" loading="lazy">
+              </figure>
+              <h3 class="project-title">Todo App</h3>
+              <p class="project-category">Tools</p>
+            </a>
+          </li>
+       
+                                                                                                                                                      
+
+            <li class="project-item  active" data-filter-item data-category="applications">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Brawlhalla</h3>
+
+                <p class="project-category">Applications</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
+                </figure>
+
+                <h3 class="project-title">DSM.</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">MetaSpark</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item information active" data-filter-item data-category="information">
+              <a href="https://information-handel.netlify.app/information/birthdaywishingwebsite/">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/birthday-wishing-website.jpg" alt="Birthday Wishing Website" loading="lazy">
+                </figure>
+                <h3 class="project-title">Birthday Wishing Website</h3>
+                <p class="project-category">Information</p>
+              </a>
+            </li>
+            <li class="project-item information active" data-filter-item data-category="information">
+              <a href="https://information-handel.netlify.app/information/jokes/">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/jokes.jpg" alt="Jokes" loading="lazy">
+                </figure>
+                <h3 class="project-title">Jokes</h3>
+                <p class="project-category">Information</p>
+              </a>
+            </li>
+            <li class="project-item information active" data-filter-item data-category="information">
+              <a href="https://information-handel.netlify.app/information/moviepedia/">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/moviepedia.png" alt="MoviePedia" loading="lazy">
+                </figure>
+                <h3 class="project-title">MoviePedia</h3>
+                <p class="project-category">Information</p>
+              </a>
+            </li>
+            <li class="project-item information active" data-filter-item data-category="information">
+              <a href="https://information-handel.netlify.app/information/proflinks/">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/proflinks.jpg" alt="ProfLinks" loading="lazy">
+                </figure>
+                <h3 class="project-title">ProfLinks</h3>
+                <p class="project-category">Information</p>
+              </a>
+            </li>
+                                                
+
+            <li class="project-item  active" data-filter-item data-category="applications">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Task Manager</h3>
+
+                <p class="project-category">Applications</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="information">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Arrival</h3>
+
+                <p class="project-category">Information</p>
+
+              </a>
+            </li>
+            
+            <li id="noResults" class="project-item" style="display: none;">
+              <p style="color: aliceblue; text-align: center;">No projects found matching</p>
+            </li>
+            
+          </ul>
+          
+          
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #BLOG
+      -->
+
+      <article class="blog" data-page="blog">
+      
+
+        <header>
+          <h2 class="h2 article-title">Blog</h2>
+        </header>
+        <section class="botbox">
+          <iframe id ="ibot"
+              src="https://www.chatbase.co/chatbot-iframe/wFfpOiONfEVGa46eVicxy"
+              frameborder="0"
+         ></iframe>
+      </section>
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
+
+                  <p class="blog-text">
+                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
+
+                  <p class="blog-text">
+                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design digest #80</h3>
+
+                  <p class="blog-text">
+                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
+
+                  <p class="blog-text">
+                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
+
+                  <p class="blog-text">
+                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Design digest #79</h3>
+
+                  <p class="blog-text">
+                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+    
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+        <section class="botbox">
+          <iframe id ="ibot"
+              src="https://www.chatbase.co/chatbot-iframe/wFfpOiONfEVGa46eVicxy"
+              frameborder="0"
+         ></iframe>
+      </section>
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28476.499918804806!2d75.74198185924517!3d26.85386450763861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db500273e196d%3A0x918a37842bf2bb43!2sMansarovar%2C%20Jaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1719929562613!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </figure>
+        </section >
+
+        <section class="contact-form" >
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action="https://api.web3forms.com/submit" method="POST" class="form" >
+            <input type="hidden" name="access_key" value="2d18f5f4-fb81-4ac1-a6e4-a4a17bd95dd8">
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+    
+    </div>
+
+  </main>
+</section>
+</div>
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+
+  
+  <script src="./assets/js/script.js"></script>
+  
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
