@@ -39,10 +39,7 @@ figure img{
     animation: example-animation 0.5s ease-in-out; /* Example animation */
 }
 
-.sidebar:not(:hover) figure img {
-    max-width: 100px;
-    max-height: 100px;
-}
+
 
 .sidebar .logo {
     color: #000;
@@ -132,4 +129,19 @@ figure img{
 
 .links .logout-link {
     margin-top: 20px;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
+   /* Add your CSS styles here */
+   .disease-item {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+}
+.disease-item img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
 }

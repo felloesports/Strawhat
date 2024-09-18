@@ -1,0 +1,131 @@
+[
+    {
+      "name": "Powdery Mildew (Cucumbers)",
+      "symptoms": [
+        "White powdery spots on leaves, stems, and flowers",
+        "Yellowing leaves",
+        "Distorted growth"
+      ],
+      "precautions": [
+        "Ensure good air circulation around plants",
+        "Water plants from the base",
+        "Use resistant varieties"
+      ],
+      "cure": "Apply sulfur-based or potassium bicarbonate fungicides.",
+      "image": "powdery_mildew_cucumbers.jpg",
+      "videoLink": "https://www.youtube.com/watch?v=exampleVideo1"
+    },
+    {
+      "name": "Apple Scab",
+      "symptoms": [
+        "Olive-green or black spots on leaves and fruit",
+        "Early leaf drop",
+        "Scabby lesions on fruit"
+      ],
+      "precautions": [
+        "Use disease-resistant apple varieties",
+        "Prune trees to improve air circulation",
+        "Rake and remove fallen leaves"
+      ],
+      "cure": "Use fungicides like captan or myclobutanil.",
+      "image": "apple_scab.jpg",
+      "videoLink": "https://www.youtube.com/watch?v=exampleVideo2"
+    },
+    {
+      "name": "Bacterial Leaf Spot (Peppers)",
+      "symptoms": [
+        "Water-soaked spots on leaves that turn brown",
+        "Leaf drop",
+        "Small, sunken, black spots on fruits"
+      ],
+      "precautions": [
+        "Use certified disease-free seeds",
+        "Avoid working in the garden when plants are wet",
+        "Rotate crops annually"
+      ],
+      "cure": "Apply copper-based fungicides to reduce the spread.",
+      "image": "bacterial_leaf_spot_peppers.jpg",
+      "videoLink": "https://www.youtube.com/watch?v=exampleVideo3"
+    },
+    {
+        "name": "Blossom End Rot (Tomatoes)",
+        "symptoms": [
+          "Dark, sunken spots at the blossom end of the fruit",
+          "Water-soaked appearance on affected area",
+          "Rotting fruit"
+        ],
+        "precautions": [
+          "Maintain consistent soil moisture",
+          "Avoid excessive nitrogen fertilizers",
+          "Ensure proper calcium levels in soil"
+        ],
+        "cure": "Apply calcium-rich foliar sprays and water plants evenly.",
+        "image": "blossom_end_rot.jpg",
+        "videoLink": "https://www.youtube.com/watch?v=exampleVideo4"
+      },
+      {
+        "name": "Downy Mildew (Grapes)",
+        "symptoms": [
+          "Yellow patches on the upper side of leaves",
+          "White fluffy growth on the undersides of leaves",
+          "Deformed or damaged grapes"
+        ],
+        "precautions": [
+          "Plant resistant grape varieties",
+          "Ensure good air circulation",
+          "Avoid overhead irrigation"
+        ],
+        "cure": "Apply fungicides containing mancozeb or copper.",
+        "image": "downy_mildew_grapes.jpg",
+        "videoLink": "https://www.youtube.com/watch?v=exampleVideo5"
+      },
+      {
+        "name": "Anthracnose (Beans)",
+        "symptoms": [
+          "Dark, sunken lesions on stems, leaves, and pods",
+          "Leaf blight and defoliation",
+          "Black streaks on stems and petioles"
+        ],
+        "precautions": [
+          "Use certified disease-free seeds",
+          "Practice crop rotation",
+          "Avoid overhead watering"
+        ],
+        "cure": "Apply fungicides containing chlorothalonil or copper-based products.",
+        "image": "anthracnose_beans.jpg",
+        "videoLink": "https://www.youtube.com/watch?v=exampleVideo6"
+      },
+      {
+        "name": "Verticillium Wilt (Potatoes)",
+        "symptoms": [
+          "Yellowing and wilting of leaves",
+          "Stunted plant growth",
+          "Brown streaks in the vascular tissue of stems"
+        ],
+        "precautions": [
+          "Plant resistant varieties",
+          "Rotate crops to non-host plants",
+          "Remove and destroy infected plants"
+        ],
+        "cure": "No cure; manage by using resistant varieties and rotating crops.",
+        "image": "verticillium_wilt_potatoes.jpg",
+        "videoLink": "https://www.youtube.com/watch?v=exampleVideo7"
+      },
+      {
+        "name": "Clubroot (Cabbage)",
+        "symptoms": [
+          "Swollen, distorted roots",
+          "Stunted plant growth",
+          "Yellowing and wilting leaves"
+        ],
+        "precautions": [
+          "Raise soil pH by applying lime",
+          "Use disease-resistant varieties",
+          "Rotate crops every 3-4 years"
+        ],
+        "cure": "No cure; manage by rotating crops and adjusting soil pH.",
+        "image": "clubroot_cabbage.jpg",
+        "videoLink": "https://www.youtube.com/watch?v=exampleVideo8"
+      }
+  ]
+  

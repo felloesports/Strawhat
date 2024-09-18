@@ -47,7 +47,82 @@
           </ul>
           
           
-  
+  <script>// Assume this function is called when the page loads
+    async function initializePlantDiseaseSearch() {
+        window.plantDiseases = await loadPlantDiseaseData();
+        document.getElementById('searchBar').addEventListener('input', searchPlantDiseases);
+    }
+    
+    async function loadPlantDiseaseData() {
+        try {
+            const response = await fetch('plant_diseases.json');
+            return await response.json();
+        } catch (error) {
+            console.error('Error loading plant disease data:', error);
+            return [];
+        }
+    }
+    
+    function searchPlantDiseases() {
+        const searchText = document.getElementById('searchBar').value.toLowerCase().trim();
+        if (searchText === '') {
+            displayPlantDiseases(window.plantDiseases, false, true);
+            return;
+        }
+        const parsedQuery = parseSearchQuery(searchText);
+        const filteredDiseases = window.plantDiseases.filter(disease => {
+            const diseaseText = `${disease.name} ${disease.symptoms.join(' ')} ${disease.precautions.join(' ')} ${disease.cure}`.toLowerCase();
+            const allTermsPresent = parsedQuery.searchTerms.every(term => diseaseText.includes(term));
+            return allTermsPresent;
+        });
+        filteredDiseases.sort((a, b) => {
+            const aRelevance = calculateRelevance(a, parsedQuery);
+            const bRelevance = calculateRelevance(b, parsedQuery);
+            return bRelevance - aRelevance;
+        });
+        displayPlantDiseases(filteredDiseases, false, true);
+    }
+    
+    function parseSearchQuery(query) {
+        const words = query.split(/\s+/);
+        return {
+            searchTerms: words
+        };
+    }
+    
+    function calculateRelevance(disease, parsedQuery) {
+        const diseaseText = `${disease.name} ${disease.symptoms.join(' ')} ${disease.precautions.join(' ')} ${disease.cure}`.toLowerCase();
+        let relevance = 0;
+        relevance += parsedQuery.searchTerms.filter(term => diseaseText.includes(term)).length;
+        if (disease.name.toLowerCase().includes(parsedQuery.searchTerms.join(' '))) {
+            relevance += 3;
+        }
+        return relevance;
+    }
+    
+    function displayPlantDiseases(diseases, append = false, clear = false) {
+        const resultsContainer = document.getElementById('resultsContainer');
+        if (clear) resultsContainer.innerHTML = '';
+        diseases.forEach(disease => {
+            const diseaseElement = document.createElement('div');
+            diseaseElement.className = 'disease-item';
+            diseaseElement.innerHTML = `
+                <h2>${disease.name}</h2>
+                <img src="${disease.image}" alt="${disease.name}" style="max-width: 200px;">
+                <h3>Symptoms:</h3>
+                <ul>${disease.symptoms.map(symptom => `<li>${symptom}</li>`).join('')}</ul>
+                <h3>Precautions:</h3>
+                <ul>${disease.precautions.map(precaution => `<li>${precaution}</li>`).join('')}</ul>
+                <h3>Cure:</h3>
+                <p>${disease.cure}</p>
+                <a href="${disease.videoLink}" target="_blank">Watch Video</a>
+            `;
+            resultsContainer.appendChild(diseaseElement);
+        });
+    }
+    
+    // Call this function when the page loads
+    initializePlantDiseaseSearch();</script>
         </div>
   
       </aside>

@@ -10,6 +10,21 @@
     <link rel="stylesheet" href="style 2.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+      /* Add your CSS styles here */
+      .disease-item {
+          border: 1px solid #ddd;
+          margin-bottom: 20px;
+          padding: 15px;
+          border-radius: 5px;
+      }
+      .disease-item img {
+          max-width: 200px;
+          height: auto;
+          display: block;
+          margin-bottom: 10px;
+      }
+  </style>
   </head>
   <body>
     <main>
@@ -49,7 +64,7 @@
       </li>
       <li class="navbar-item">
         <span class="material-symbols-outlined">ambient_screen</span>
-        <button></button>
+        <button class="navbar-link" data-nav-link>Support</button>
       </li>
       <li class="navbar-item">
         <span class="material-symbols-outlined">pacemaker</span>
@@ -109,10 +124,17 @@
 
     </aside>
     <div class="main-content">
-      <article class="about  active" data-page="home">
-        <h2 class="h2 article-title">support</h2>
-  
-  
+      <article class="about  active" data-page="support">
+        <h1>Plant Disease Search</h1>
+    <div style="position: relative;">
+        <input type="text" id="searchBar" placeholder="Search plant diseases...">
+    </div>
+    <div id="resultsContainer"></div>
+    
+    
+         
+        <script src="./support.js"></script>
+    
         
         
          
