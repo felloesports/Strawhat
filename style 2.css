@@ -20,24 +20,30 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    max-width: 110px;
+    min-width: 260px;;
     height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(17px);
-    --webkit-backdrop-filter: blur(17px);
+    -webkit-backdrop-filter: blur(17px); /* Corrected */
     border-right: 1px solid rgba(255, 255, 255, 0.7);
-    transition: width 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
-.sidebar:hover {
-    min-width: 260px;
+
+
+figure img{
+    transition: all 0.2s ease-in-out;
+    animation: example-animation 0.5s ease-in-out; /* Example animation */
 }
-.sidebar:hover figure {
-    max-width: 10px;
+
+.sidebar:not(:hover) figure img {
+    max-width: 100px;
+    max-height: 100px;
 }
+
 .sidebar .logo {
     color: #000;
     display: flex;
