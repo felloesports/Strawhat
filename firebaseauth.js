@@ -5,7 +5,8 @@ function rsignUp() {
     var password = document.getElementById('signUpPassword').value;
     signUp(email, password);
 }
-//sachin
+let sachin = "s";
+//darshill 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
