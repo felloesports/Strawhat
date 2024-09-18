@@ -12,70 +12,113 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <aside class="sidebar">
-     
-      <ul class="links">
-        <h4>Main Menu</h4>
-        <li class="navbar-item">
-          <span class="material-symbols-outlined">dashboard</span>
-          <button class="navbar-link  active" data-nav-link>Home</button>
-        </li>
-        <li class="navbar-item">
-          <span class="material-symbols-outlined">show_chart</span>
-          <button class="navbar-link" data-nav-link>About</button>
-        </li>
-        <li class="navbar-item">
-          <span class="material-symbols-outlined">flag</span>
-          <button class="navbar-link" data-nav-link>Project</button>
-        </li>
-        <hr>
-        <h4>Advanced</h4>
-        <li class="navbar-item">
-          <span class="material-symbols-outlined">person</span>
-          <button class="navbar-link" data-nav-link>Blog</button>
-        </li>
-        <li class="navbar-item">
-          <span class="material-symbols-outlined">group</span>
-          <button class="navbar-link" data-nav-link>Contact</button>
-        </li>
-        <li class="navbar-item">
-          <span class="material-symbols-outlined">ambient_screen</span>
-          <button></button>
-        </li>
-        <li class="navbar-item">
-          <span class="material-symbols-outlined">pacemaker</span>
-          <button></button>
-        </li>
-        <li class="navbar-item">
-          <span class="material-symbols-outlined">monitoring</span>
-          <button></button>
-        </li>
-        <hr>
-        <h4>Account</h4>
-         <li class="navbar-item">
-          <span class="material-symbols-outlined">bar_chart</span>
-          <button></button>
-        </li>
-         <li class="navbar-item">
-          <span class="material-symbols-outlined">mail</span>
-          <button></button>
-        </li>
-         <li class="navbar-item">
-          <span class="material-symbols-outlined">settings</span>
+    <main>
+    <aside class="sidebar" data-sidebar>
+      
+      <div class="sidebar-info">
+       
+    <figure class="avatar-box">
+        <div class="avatar-container">
+            <img id="avatar" src="./Fruits_Valley-removebg-preview.png" alt="Sachin Sharma" width="100">
+        </div>
+    </figure>
+   
+    <ul class="links">
+      <h4>Main Menu</h4>
+      <li class="navbar-item">
+        <span class="material-symbols-outlined">dashboard</span>
+        <button class="navbar-link  active" data-nav-link>Home</button>
+      </li>
+      <li class="navbar-item">
+        <span class="material-symbols-outlined">show_chart</span>
+        <button class="navbar-link" data-nav-link>About</button>
+      </li>
+      <li class="navbar-item">
+        <span class="material-symbols-outlined">flag</span>
+        <button class="navbar-link" data-nav-link>Project</button>
+      </li>
+      <hr>
+      <h4>Advanced</h4>
+      <li class="navbar-item">
+        <span class="material-symbols-outlined">person</span>
+        <button class="navbar-link" data-nav-link>Blog</button>
+      </li>
+      <li class="navbar-item">
+        <span class="material-symbols-outlined">group</span>
+        <button class="navbar-link" data-nav-link>Contact</button>
+      </li>
+      <li class="navbar-item">
+        <span class="material-symbols-outlined">ambient_screen</span>
+        <button></button>
+      </li>
+      <li class="navbar-item">
+        <span class="material-symbols-outlined">pacemaker</span>
+        <button></button>
+      </li>
+      <li class="navbar-item">
+        <span class="material-symbols-outlined">monitoring</span>
+        <button></button>
+      </li>
+      <hr>
+      <h4>Account</h4>
+       <li class="navbar-item">
+        <span class="material-symbols-outlined">bar_chart</span>
+        <button></button>
+      </li>
+       <li class="navbar-item">
+        <span class="material-symbols-outlined">mail</span>
+        <button></button>
+      </li>
+       <li class="navbar-item">
+        <span class="material-symbols-outlined">settings</span>
+        
+      </li>
+      <li class="logout-link">
+        <span class="material-symbols-outlined">logout</span>
+        <button></button>
+      </li>
+
+      
+    </ul>
+    <button class="Btn" onclick="signOut()">
+      <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+      <div class="text">Sign out</div>
+    </button>
+        <div class="info-content">
           
-        </li>
-        <li class="logout-link">
-          <span class="material-symbols-outlined">logout</span>
-          <button></button>
-        </li>
+
+          <p class="title" id="typewriter"></p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+
+        <div class="separator"></div>
+        
+      </div>
+
+    </aside>
+    <div class="main-content">
+      <article class="about  active" data-page="home">
+        <h2 class="h2 article-title">support</h2>
+  
   
         
-      </ul>
-      <button class="Btn" onclick="signOut()">
-        <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
-        <div class="sign-text">Sign out</div>
-      </button>
-    </aside>
-    
+        
+         
+        <script src="./support.js"></script>
+        </article>
+    </div>
+    </main>
   </body>
 </html>
