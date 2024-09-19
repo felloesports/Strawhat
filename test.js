@@ -1,13 +1,12 @@
+// API key and URL for Pixabay
+const API_KEY = '38734772-9a4efa24da820dffd50b42987'; // Replace with your actual API key
+const PIXABAY_URL = "https://pixabay.com/api/?key=" + API_KEY + "&q=";
 
-// Initialize Firebase (replace with your own config)
-// Plant Health Tracker
+// Global variables
+let plantInventory = [];
+let plantCatalog = [];
 
-var API_KEY = '38734772-9a4efa24da820dffd50b42987'; // Replace with your API key
-var URL = "https://pixabay.com/api/?key=" + API_KEY + "&q=";
-
-let plantsArray = [];
-let allPlantNames = [];
-
+// Function to add a new plant
 function addPlant() {
     let plantName = document.getElementById('plantName').value;
     let plantType = document.getElementById('plantType').value;
@@ -23,10 +22,7 @@ function addPlant() {
     sunExposure = encrypt(sunExposure, passphrase);
     wateringFrequency = encrypt(wateringFrequency, passphrase);
     
-    
     if (plantName && plantType && plantedDate && soilType && sunExposure && wateringFrequency) {
-
-    
         db.collection('plants').add({
             plantName,
             plantType,
@@ -39,7 +35,7 @@ function addPlant() {
         .then(() => {
             console.log("Plant added successfully");
             document.getElementById('addPlantForm').reset();
-            readPlants();
+            fetchAndPopulatePlants();
         })
         .catch((error) => {
             console.error("Error adding plant: ", error);
@@ -49,74 +45,65 @@ function addPlant() {
     }
 }
 
-function readPlants() {
+// Function to fetch and populate plants
+function fetchAndPopulatePlants() {
     db.collection('plants').orderBy('createdAt').get()
     .then((querySnapshot) => {
-        plantsArray = [];
+        plantInventory = [];
         querySnapshot.forEach((doc) => {
-            let plant = doc.data();
-            plant.id = doc.id;
+            let plantSpecimen = doc.data();
+            plantSpecimen.id = doc.id;
 
-            plant.plantName = decrypt(plant.plantName, passphrase);
-            plant.plantType = decrypt(plant.plantType, passphrase);
-            plant.plantedDate = decrypt(plant.plantedDate, passphrase);
-            plant.soilType = decrypt(plant.soilType, passphrase);
-            plant.sunExposure = decrypt(plant.sunExposure, passphrase);
-            plant.wateringFrequency = decrypt(plant.wateringFrequency, passphrase);
-            plant.daysAfterPlanting = calculateDaysAfterPlanting(plant.plantedDate);
+            plantSpecimen.plantName = decrypt(plantSpecimen.plantName, passphrase);
+            plantSpecimen.plantType = decrypt(plantSpecimen.plantType, passphrase);
+            plantSpecimen.plantedDate = decrypt(plantSpecimen.plantedDate, passphrase);
+            plantSpecimen.soilType = decrypt(plantSpecimen.soilType, passphrase);
+            plantSpecimen.sunExposure = decrypt(plantSpecimen.sunExposure, passphrase);
+            plantSpecimen.wateringFrequency = decrypt(plantSpecimen.wateringFrequency, passphrase);
+            plantSpecimen.growthDuration = calculateGrowthDuration(plantSpecimen.plantedDate);
 
-            plant.daysAfterPlanting = calculateDaysAfterPlanting(plant.plantedDate);
-            plantsArray.push(plant);
+            plantInventory.push(plantSpecimen);
         });
-        displayPlants(plantsArray);
-        setupSearch();
-        initializePlantNames(); // Call this here to ensure it runs after plantsArray is populated
+        renderPlantList(plantInventory);
+        initializeSearchFunctionality();
+        compileUniqueSpecies();
     })
     .catch((error) => {
-        console.error("Error reading plants: ", error);
+        console.error("Error fetching plants: ", error);
     });
 }
 
-function calculateDaysAfterPlanting(plantedDate) {
-    const today = new Date();
-    const planted = new Date(plantedDate);
-    const diffTime = Math.abs(today - planted);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    return diffDays;
+// Function to calculate growth duration
+function calculateGrowthDuration(plantedDate) {
+    const currentDate = new Date();
+    const plantingDate = new Date(plantedDate);
+    const growthPeriod = Math.abs(currentDate - plantingDate);
+    const daysGrown = Math.ceil(growthPeriod / (1000 * 60 * 60 * 24)); 
+    return daysGrown;
 }
 
-function displayPlants(plants) {
+// Function to render plant list
+function renderPlantList(plants) {
     const plantList = document.getElementById('plantList');
     plantList.innerHTML = ''; // Clear any existing content
     
     plants.forEach(plant => {
-        // Decrypt plant properties
-        
-
-        // Create a new plant item element
         const plantItem = document.createElement('div');
         plantItem.className = 'plant-item';
 
         // Fetch images based on the plant name
-        fetch(URL + encodeURIComponent(plant.plantName))
+        fetch(PIXABAY_URL + encodeURIComponent(plant.plantName))
             .then(response => response.json())
             .then(data => {
-                let imageUrl;
-                
-                if (data.hits && data.hits.length > 0) {
-                    // Use the first image from the search results
-                    imageUrl = data.hits[0].webformatURL;
-                } else {
-                    // Use a placeholder if no image is found
-                    imageUrl = 'path/to/placeholder-image.jpg'; // Replace with an actual placeholder image path
-                }
+                let imageUrl = data.hits && data.hits.length > 0 
+                    ? data.hits[0].webformatURL 
+                    : 'path/to/placeholder-image.jpg'; // Replace with actual placeholder
 
-                // Update the innerHTML of the plant item with image and plant details
                 plantItem.innerHTML = `
                     <img src="${imageUrl}" alt="${plant.plantName}">
                     <h3>${plant.plantName}</h3>
                     <p>Type: ${plant.plantType}</p>
-                    <p>Planted: ${plant.plantedDate} (${plant.daysAfterPlanting} days ago)</p>
+                    <p>Planted: ${plant.plantedDate} (${plant.growthDuration} days ago)</p>
                     <p>Soil: ${plant.soilType}</p>
                     <p>Sun: ${plant.sunExposure}</p>
                     <p>Watering: ${plant.wateringFrequency}</p>
@@ -125,13 +112,11 @@ function displayPlants(plants) {
             })
             .catch(error => {
                 console.error('Error fetching image:', error);
-
-                // Fallback in case of an error fetching the image
                 plantItem.innerHTML = `
                     <p>Error loading image for ${plant.plantName}</p>
                     <h3>${plant.plantName}</h3>
                     <p>Type: ${plant.plantType}</p>
-                    <p>Planted: ${plant.plantedDate} (${plant.daysAfterPlanting} days ago)</p>
+                    <p>Planted: ${plant.plantedDate} (${plant.growthDuration} days ago)</p>
                     <p>Soil: ${plant.soilType}</p>
                     <p>Sun: ${plant.sunExposure}</p>
                     <p>Watering: ${plant.wateringFrequency}</p>
@@ -139,20 +124,19 @@ function displayPlants(plants) {
                 `;
             });
 
-        // Append the plant item to the plant list after setting the innerHTML
         plantList.appendChild(plantItem);
     });
 }
 
-
+// Function to check plant health
 function checkPlantHealth(plantId) {
-    const plant = plantsArray.find(p => p.id === plantId);
+    const plant = plantInventory.find(p => p.id === plantId);
     if (!plant) return;
 
     let health = "Good";
     let recommendations = [];
 
-    if (plant.wateringFrequency === "Low" && plant.daysAfterPlanting > 7) {
+    if (plant.wateringFrequency === "Low" && plant.growthDuration > 7) {
         health = "Needs attention";
         recommendations.push("Consider increasing watering frequency.");
     }
@@ -162,89 +146,31 @@ function checkPlantHealth(plantId) {
         recommendations.push("This plant may need more sunlight.");
     }
 
-    if (plant.daysAfterPlanting > 90) {
+    if (plant.growthDuration > 90) {
         recommendations.push("Consider checking for signs of maturity or harvest readiness.");
     }
 
     alert(`Plant Health: ${health}\n\nRecommendations:\n${recommendations.join("\n")}`);
 }
 
-function initializePlantNames() {
-    allPlantNames = [...new Set(plantsArray.map(plant => plant.plantName))];
-}
-
-function getPlantSuggestions(input) {
-    input = input.toLowerCase();
-    return allPlantNames.filter(name => 
-        name.toLowerCase().includes(input)
-    ).sort((a, b) => 
-        a.toLowerCase().indexOf(input) - b.toLowerCase().indexOf(input)
-    );
-}
-
-function updateAutoComplete(suggestions) {
-    const searchBar = document.getElementById('searchBar');
-    let autoComplete = document.getElementById('autoComplete');
-    if (!autoComplete) {
-        autoComplete = document.createElement('ul');
-        autoComplete.id = 'autoComplete';
-        autoComplete.className = 'auto-complete';
-        searchBar.parentNode.insertBefore(autoComplete, searchBar.nextSibling);
-    }
-    autoComplete.innerHTML = '';
-    suggestions.forEach(suggestion => {
-        const li = document.createElement('li');
-        li.textContent = suggestion;
-        li.addEventListener('click', () => {
-            searchBar.value = suggestion;
-            autoComplete.innerHTML = '';
-            searchPlants();
-        });
-        autoComplete.appendChild(li);
+// Function to initialize search functionality
+function initializeSearchFunctionality() {
+    const plantSearchInput = document.getElementById('plantSearchBar');
+    plantSearchInput.addEventListener('input', function() {
+        const queryTerm = this.value.toLowerCase();
+        const matchingPlants = plantInventory.filter(plant => 
+            plant.plantName.toLowerCase().includes(queryTerm)
+        );
+        renderPlantList(matchingPlants);
     });
 }
 
-function searchPlants() {
-    const searchBar = document.getElementById('searchBar');
-    const searchText = searchBar.value.toLowerCase().trim();
-    
-    if (searchText === '') {
-        displayPlants(plantsArray); // Show all plants if search is empty
-        updateAutoComplete([]);
-        return;
-    }
-    
-    const suggestions = getPlantSuggestions(searchText);
-    updateAutoComplete(suggestions);
-    
-    const filteredPlants = plantsArray.filter(plant => {
-        const plantText = `${plant.plantName} ${plant.plantType} ${plant.soilType} ${plant.sunExposure} ${plant.wateringFrequency}`.toLowerCase();
-        return plantText.includes(searchText);
-    });
-    
-    displayPlants(filteredPlants);
+// Function to compile unique species
+function compileUniqueSpecies() {
+    plantCatalog = [...new Set(plantInventory.map(plant => plant.plantName))];
 }
 
-function setupSearch() {
-    const searchBar = document.getElementById('searchBar');
-    
-    searchBar.addEventListener('input', searchPlants);
-    
-    searchBar.addEventListener('focus', () => {
-        if (searchBar.value) {
-            searchPlants();
-        }
-    });
-    
-    document.addEventListener('click', (e) => {
-        if (e.target !== searchBar) {
-            updateAutoComplete([]);
-        }
-    });
-}
-
-// Make sure to call these functions at the appropriate times
-document.addEventListener('DOMContentLoaded', () => {
-    readPlants();
-    setupSearch();
+// Initial setup
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetchAndPopulatePlants();
 });
