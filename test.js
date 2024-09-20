@@ -1,122 +1,205 @@
+// API key and URL for Pixabay
+const API_KEY = '38734772-9a4efa24da820dffd50b42987'; // Replace with your actual API key
+const PIXABAY_URL = "https://pixabay.com/api/?key=" + API_KEY + "&q=";
 
-// Initialize Firebase (replace with your own config)
-// Plant Health Tracker
 
-var API_KEY = '38734772-9a4efa24da820dffd50b42987'; // Replace with your API key
-var URL = "https://pixabay.com/api/?key=" + API_KEY + "&q=";
-
-let plantsArray = [];
-let allPlantNames = [];
-
-function addPlant() {
-    let plantName = document.getElementById('plantName').value;
-    let plantType = document.getElementById('plantType').value;
-    let plantedDate = document.getElementById('plantedDate').value;
-    let soilType = document.getElementById('soilType').value;
-    let sunExposure = document.getElementById('sunExposure').value;
-    let wateringFrequency = document.getElementById('wateringFrequency').value;
+// Global variables
+let plantInventory = [];
+let plantCatalog = [];
+const validPlantNames = [
+    'Carrot', 'Broccoli', 'Spinach', 'Tomato', 'Potato',  // Vegetables
+    'Cabbage', 'Cucumber', 'Bell Pepper', 'Eggplant', 'Zucchini',
+    'Onion', 'Garlic', 'Pumpkin', 'Lettuce', 'Cauliflower',
     
+    'Apple', 'Banana', 'Mango', 'Grapes', 'Strawberry',  // Fruits
+    'Orange', 'Pineapple', 'Papaya', 'Pear', 'Peach',
+    'Watermelon', 'Blueberry', 'Raspberry', 'Cherry', 'Kiwi',
+
+    'Basil', 'Mint', 'Thyme', 'Oregano', 'Parsley',  // Herbs
+    'Cilantro', 'Sage', 'Rosemary', 'Dill', 'Lemongrass',
+    'Chives', 'Tarragon', 'Fennel', 'Bay Leaf', 'Chamomile',
+
+    'Wheat', 'Rice', 'Barley', 'Quinoa', 'Sorghum',  // Grains
+    'Oats', 'Corn', 'Rye', 'Buckwheat', 'Teff',
+
+    'Millet', 'Foxtail Millet', 'Finger Millet', 'Pearl Millet', 'Barnyard Millet',  // Millets
+    'Proso Millet', 'Kodo Millet', 'Little Millet',
+
+    'Rose', 'Tulip', 'Daisy', 'Sunflower', 'Lily',  // Flowers
+    'Orchid', 'Marigold', 'Lavender', 'Jasmine', 'Chrysanthemum',
+    'Daffodil', 'Peony', 'Iris', 'Begonia',
+
+    'Oak', 'Maple', 'Pine', 'Birch', 'Cedar',  // Trees
+    'Eucalyptus', 'Banyan', 'Baobab', 'Palm', 'Cherry Blossom',
+
+    'Azalea', 'Hibiscus', 'Hydrangea', 'Lilac', 'Boxwood',  // Shrubs
+    'Forsythia', 'Camellia', 'Rhododendron', 'Holly', 'Juniper',
+
+    'Saguaro', 'Prickly Pear', 'Barrel Cactus', 'Christmas Cactus', 'Golden Barrel',  // Cacti
+    'Cholla', 'Pincushion Cactus', 'Bishop’s Cap', 'Organ Pipe Cactus'
+];
+
+
+
+//sentance 
+function toSentenceCase(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+function levenshte_in_Distance(a, b) {
+    const matrix = [];
+
+    // Create an empty matrix
+    for (let i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+    }
+    for (let j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
+    }
+
+    // Fill the matrix
+    for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+            if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j - 1] + 1, // substitution
+                    Math.min(
+                        matrix[i][j - 1] + 1, // insertion
+                        matrix[i - 1][j] + 1 // deletion
+                    )
+                );
+            }
+        }
+    }
+    return matrix[b.length][a.length];
+}
+
+function findClosestMatch(inputName, validNames) {
+    let closestMatch = null;
+    let lowestDistance = Infinity;
+
+    validNames.forEach(validName => {
+        const distance = levenshte_in_Distance(inputName.toLowerCase(), validName.toLowerCase());
+        if (distance < lowestDistance) {
+            lowestDistance = distance;
+            closestMatch = validName;
+        }
+    });
+
+    return closestMatch;
+}
+
+// Usage in addPlant function
+
+// Function to add a new plant
+function addPlant() {
+    let plantName = document.getElementById('plantName').value.trim();
+    let plantType = document.getElementById('plantType').value.trim();
+    let plantedDate = document.getElementById('plantedDate').value.trim();
+    let soilType = document.getElementById('soilType').value.trim();
+    let sunExposure = document.getElementById('sunExposure').value.trim();
+    let wateringFrequency = document.getElementById('wateringFrequency').value.trim();
+
+    // Check for empty inputs
+    if (!plantName || !plantType || !plantedDate || !soilType || !sunExposure || !wateringFrequency) {
+        alert('Please fill in all fields');
+        return; // Exit the function if any field is empty
+    }
+
+    plantName = findClosestMatch(plantName, validPlantNames);
+
+    // Convert plant name to sentence case
+    plantName = toSentenceCase(plantName);
+
+    // Encrypt the input values
     plantName = encrypt(plantName, passphrase);
     plantType = encrypt(plantType, passphrase);
     plantedDate = encrypt(plantedDate, passphrase);
     soilType = encrypt(soilType, passphrase);
     sunExposure = encrypt(sunExposure, passphrase);
     wateringFrequency = encrypt(wateringFrequency, passphrase);
-    
-    
-    if (plantName && plantType && plantedDate && soilType && sunExposure && wateringFrequency) {
 
-    
-        db.collection('plants').add({
-            plantName,
-            plantType,
-            plantedDate,
-            soilType,
-            sunExposure,
-            wateringFrequency,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        })
-        .then(() => {
-            console.log("Plant added successfully");
-            document.getElementById('addPlantForm').reset();
-            readPlants();
-        })
-        .catch((error) => {
-            console.error("Error adding plant: ", error);
-        });
-    } else {
-        alert('Please fill in all fields');
-    }
-}
-
-function readPlants() {
-    db.collection('plants').orderBy('createdAt').get()
-    .then((querySnapshot) => {
-        plantsArray = [];
-        querySnapshot.forEach((doc) => {
-            let plant = doc.data();
-            plant.id = doc.id;
-
-            plant.plantName = decrypt(plant.plantName, passphrase);
-            plant.plantType = decrypt(plant.plantType, passphrase);
-            plant.plantedDate = decrypt(plant.plantedDate, passphrase);
-            plant.soilType = decrypt(plant.soilType, passphrase);
-            plant.sunExposure = decrypt(plant.sunExposure, passphrase);
-            plant.wateringFrequency = decrypt(plant.wateringFrequency, passphrase);
-            plant.daysAfterPlanting = calculateDaysAfterPlanting(plant.plantedDate);
-
-            plant.daysAfterPlanting = calculateDaysAfterPlanting(plant.plantedDate);
-            plantsArray.push(plant);
-        });
-        displayPlants(plantsArray);
-        setupSearch();
-        initializePlantNames(); // Call this here to ensure it runs after plantsArray is populated
+    // Add the plant data to the Firestore database
+    db.collection('plants').add({
+        plantName,
+        plantType,
+        plantedDate,
+        soilType,
+        sunExposure,
+        wateringFrequency,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(() => {
+        console.log("Plant added successfully");
+        document.getElementById('addPlantForm').reset();
+        fetchAndPopulatePlants();
     })
     .catch((error) => {
-        console.error("Error reading plants: ", error);
+        console.error("Error adding plant: ", error);
     });
 }
 
-function calculateDaysAfterPlanting(plantedDate) {
-    const today = new Date();
-    const planted = new Date(plantedDate);
-    const diffTime = Math.abs(today - planted);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    return diffDays;
+// Function to fetch and populate plants
+function fetchAndPopulatePlants() {
+    db.collection('plants').orderBy('createdAt').get()
+    .then((querySnapshot) => {
+        plantInventory = [];
+        querySnapshot.forEach((doc) => {
+            let plantSpecimen = doc.data();
+            plantSpecimen.id = doc.id;
+
+            plantSpecimen.plantName = decrypt(plantSpecimen.plantName, passphrase);
+            plantSpecimen.plantType = decrypt(plantSpecimen.plantType, passphrase);
+            plantSpecimen.plantedDate = decrypt(plantSpecimen.plantedDate, passphrase);
+            plantSpecimen.soilType = decrypt(plantSpecimen.soilType, passphrase);
+            plantSpecimen.sunExposure = decrypt(plantSpecimen.sunExposure, passphrase);
+            plantSpecimen.wateringFrequency = decrypt(plantSpecimen.wateringFrequency, passphrase);
+            plantSpecimen.growthDuration = calculateGrowthDuration(plantSpecimen.plantedDate);
+
+            plantInventory.push(plantSpecimen);
+        });
+        renderPlantList(plantInventory);
+        initializeSearchFunctionality();
+        compileUniqueSpecies();
+    })
+    .catch((error) => {
+        console.error("Error fetching plants: ", error);
+    });
 }
 
-function displayPlants(plants) {
+// Function to calculate growth duration
+function calculateGrowthDuration(plantedDate) {
+    const currentDate = new Date();
+    const plantingDate = new Date(plantedDate);
+    const growthPeriod = Math.abs(currentDate - plantingDate);
+    const daysGrown = Math.ceil(growthPeriod / (1000 * 60 * 60 * 24)); 
+    return daysGrown;
+}
+
+// Function to render plant list
+function renderPlantList(plants) {
     const plantList = document.getElementById('plantList');
     plantList.innerHTML = ''; // Clear any existing content
     
     plants.forEach(plant => {
-        // Decrypt plant properties
-        
-
-        // Create a new plant item element
         const plantItem = document.createElement('div');
         plantItem.className = 'plant-item';
 
         // Fetch images based on the plant name
-        fetch(URL + encodeURIComponent(plant.plantName))
+        fetch(PIXABAY_URL + encodeURIComponent(plant.plantName))
             .then(response => response.json())
             .then(data => {
-                let imageUrl;
-                
-                if (data.hits && data.hits.length > 0) {
-                    // Use the first image from the search results
-                    imageUrl = data.hits[0].webformatURL;
-                } else {
-                    // Use a placeholder if no image is found
-                    imageUrl = 'path/to/placeholder-image.jpg'; // Replace with an actual placeholder image path
-                }
+                let imageUrl = data.hits && data.hits.length > 0 
+                    ? data.hits[0].webformatURL 
+                    : 'path/to/placeholder-image.jpg'; // Replace with actual placeholder
 
-                // Update the innerHTML of the plant item with image and plant details
                 plantItem.innerHTML = `
                     <img src="${imageUrl}" alt="${plant.plantName}">
                     <h3>${plant.plantName}</h3>
                     <p>Type: ${plant.plantType}</p>
-                    <p>Planted: ${plant.plantedDate} (${plant.daysAfterPlanting} days ago)</p>
+                    <p>Planted: ${plant.plantedDate} (${plant.growthDuration} days ago)</p>
                     <p>Soil: ${plant.soilType}</p>
                     <p>Sun: ${plant.sunExposure}</p>
                     <p>Watering: ${plant.wateringFrequency}</p>
@@ -125,13 +208,11 @@ function displayPlants(plants) {
             })
             .catch(error => {
                 console.error('Error fetching image:', error);
-
-                // Fallback in case of an error fetching the image
                 plantItem.innerHTML = `
                     <p>Error loading image for ${plant.plantName}</p>
                     <h3>${plant.plantName}</h3>
                     <p>Type: ${plant.plantType}</p>
-                    <p>Planted: ${plant.plantedDate} (${plant.daysAfterPlanting} days ago)</p>
+                    <p>Planted: ${plant.plantedDate} (${plant.growthDuration} days ago)</p>
                     <p>Soil: ${plant.soilType}</p>
                     <p>Sun: ${plant.sunExposure}</p>
                     <p>Watering: ${plant.wateringFrequency}</p>
@@ -139,20 +220,19 @@ function displayPlants(plants) {
                 `;
             });
 
-        // Append the plant item to the plant list after setting the innerHTML
         plantList.appendChild(plantItem);
     });
 }
 
-
+// Function to check plant health
 function checkPlantHealth(plantId) {
-    const plant = plantsArray.find(p => p.id === plantId);
+    const plant = plantInventory.find(p => p.id === plantId);
     if (!plant) return;
 
     let health = "Good";
     let recommendations = [];
 
-    if (plant.wateringFrequency === "Low" && plant.daysAfterPlanting > 7) {
+    if (plant.wateringFrequency === "Low" && plant.growthDuration > 7) {
         health = "Needs attention";
         recommendations.push("Consider increasing watering frequency.");
     }
@@ -162,89 +242,31 @@ function checkPlantHealth(plantId) {
         recommendations.push("This plant may need more sunlight.");
     }
 
-    if (plant.daysAfterPlanting > 90) {
+    if (plant.growthDuration > 90) {
         recommendations.push("Consider checking for signs of maturity or harvest readiness.");
     }
 
     alert(`Plant Health: ${health}\n\nRecommendations:\n${recommendations.join("\n")}`);
 }
 
-function initializePlantNames() {
-    allPlantNames = [...new Set(plantsArray.map(plant => plant.plantName))];
-}
-
-function getPlantSuggestions(input) {
-    input = input.toLowerCase();
-    return allPlantNames.filter(name => 
-        name.toLowerCase().includes(input)
-    ).sort((a, b) => 
-        a.toLowerCase().indexOf(input) - b.toLowerCase().indexOf(input)
-    );
-}
-
-function updateAutoComplete(suggestions) {
-    const searchBar = document.getElementById('searchBar');
-    let autoComplete = document.getElementById('autoComplete');
-    if (!autoComplete) {
-        autoComplete = document.createElement('ul');
-        autoComplete.id = 'autoComplete';
-        autoComplete.className = 'auto-complete';
-        searchBar.parentNode.insertBefore(autoComplete, searchBar.nextSibling);
-    }
-    autoComplete.innerHTML = '';
-    suggestions.forEach(suggestion => {
-        const li = document.createElement('li');
-        li.textContent = suggestion;
-        li.addEventListener('click', () => {
-            searchBar.value = suggestion;
-            autoComplete.innerHTML = '';
-            searchPlants();
-        });
-        autoComplete.appendChild(li);
+// Function to initialize search functionality
+function initializeSearchFunctionality() {
+    const plantSearchInput = document.getElementById('plantSearchBar');
+    plantSearchInput.addEventListener('input', function() {
+        const queryTerm = this.value.toLowerCase();
+        const matchingPlants = plantInventory.filter(plant => 
+            plant.plantName.toLowerCase().includes(queryTerm)
+        );
+        renderPlantList(matchingPlants);
     });
 }
 
-function searchPlants() {
-    const searchBar = document.getElementById('searchBar');
-    const searchText = searchBar.value.toLowerCase().trim();
-    
-    if (searchText === '') {
-        displayPlants(plantsArray); // Show all plants if search is empty
-        updateAutoComplete([]);
-        return;
-    }
-    
-    const suggestions = getPlantSuggestions(searchText);
-    updateAutoComplete(suggestions);
-    
-    const filteredPlants = plantsArray.filter(plant => {
-        const plantText = `${plant.plantName} ${plant.plantType} ${plant.soilType} ${plant.sunExposure} ${plant.wateringFrequency}`.toLowerCase();
-        return plantText.includes(searchText);
-    });
-    
-    displayPlants(filteredPlants);
+// Function to compile unique species
+function compileUniqueSpecies() {
+    plantCatalog = [...new Set(plantInventory.map(plant => plant.plantName))];
 }
 
-function setupSearch() {
-    const searchBar = document.getElementById('searchBar');
-    
-    searchBar.addEventListener('input', searchPlants);
-    
-    searchBar.addEventListener('focus', () => {
-        if (searchBar.value) {
-            searchPlants();
-        }
-    });
-    
-    document.addEventListener('click', (e) => {
-        if (e.target !== searchBar) {
-            updateAutoComplete([]);
-        }
-    });
-}
-
-// Make sure to call these functions at the appropriate times
-document.addEventListener('DOMContentLoaded', () => {
-    readPlants();
-    setupSearch();
+// Initial setup
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetchAndPopulatePlants();
 });

@@ -208,17 +208,34 @@ function displayPlantDiseases(diseases) {
         const diseaseElement = document.createElement('div');
         diseaseElement.className = 'disease-item';
         diseaseElement.innerHTML = `
-            <h2>${disease.name}</h2>
-            <img src="${disease.image}" alt="${disease.name}" style="max-width: 200px;">
-            <h3>Symptoms:</h3>
-            <ul>${disease.symptoms.map(symptom => `<li>${symptom}</li>`).join('')}</ul>
-            <h3>Precautions:</h3>
+            <li class="project-item  active" data-filter-item data-category="${disease.plantType}">
+            <a href="https://appsweb.netlify.app/webapps/budgetwebapp" target="_blank">
+
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+
+                <img src="./assets/images/${disease.image}" alt="${disease.name}" loading="lazy">
+              </figure>
+
+              <h3 class="project-title">${disease.name}</h3>
+
+              <p class="project-category">${disease.plantType}</p>
+
+            </a>
+          </li>
+          <h3>Symptoms:</h3>
+        <ul>${disease.symptoms.map(symptom => `<li>${symptom}</li>`).join('')}</ul>
+        <h3>Precautions:</h3>
             <ul>${disease.precautions.map(precaution => `<li>${precaution}</li>`).join('')}</ul>
             <h3>Cure:</h3>
             <p>${disease.cure}</p>
             <a href="${disease.videoLink}" target="_blank">Watch Video</a>
+
         `;
         resultsContainer.appendChild(diseaseElement);
+        
     });
 }
 
