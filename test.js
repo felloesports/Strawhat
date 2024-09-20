@@ -2,47 +2,143 @@
 const API_KEY = '38734772-9a4efa24da820dffd50b42987'; // Replace with your actual API key
 const PIXABAY_URL = "https://pixabay.com/api/?key=" + API_KEY + "&q=";
 
+
 // Global variables
 let plantInventory = [];
 let plantCatalog = [];
+const validPlantNames = [
+    'Carrot', 'Broccoli', 'Spinach', 'Tomato', 'Potato',  // Vegetables
+    'Cabbage', 'Cucumber', 'Bell Pepper', 'Eggplant', 'Zucchini',
+    'Onion', 'Garlic', 'Pumpkin', 'Lettuce', 'Cauliflower',
+    
+    'Apple', 'Banana', 'Mango', 'Grapes', 'Strawberry',  // Fruits
+    'Orange', 'Pineapple', 'Papaya', 'Pear', 'Peach',
+    'Watermelon', 'Blueberry', 'Raspberry', 'Cherry', 'Kiwi',
+
+    'Basil', 'Mint', 'Thyme', 'Oregano', 'Parsley',  // Herbs
+    'Cilantro', 'Sage', 'Rosemary', 'Dill', 'Lemongrass',
+    'Chives', 'Tarragon', 'Fennel', 'Bay Leaf', 'Chamomile',
+
+    'Wheat', 'Rice', 'Barley', 'Quinoa', 'Sorghum',  // Grains
+    'Oats', 'Corn', 'Rye', 'Buckwheat', 'Teff',
+
+    'Millet', 'Foxtail Millet', 'Finger Millet', 'Pearl Millet', 'Barnyard Millet',  // Millets
+    'Proso Millet', 'Kodo Millet', 'Little Millet',
+
+    'Rose', 'Tulip', 'Daisy', 'Sunflower', 'Lily',  // Flowers
+    'Orchid', 'Marigold', 'Lavender', 'Jasmine', 'Chrysanthemum',
+    'Daffodil', 'Peony', 'Iris', 'Begonia',
+
+    'Oak', 'Maple', 'Pine', 'Birch', 'Cedar',  // Trees
+    'Eucalyptus', 'Banyan', 'Baobab', 'Palm', 'Cherry Blossom',
+
+    'Azalea', 'Hibiscus', 'Hydrangea', 'Lilac', 'Boxwood',  // Shrubs
+    'Forsythia', 'Camellia', 'Rhododendron', 'Holly', 'Juniper',
+
+    'Saguaro', 'Prickly Pear', 'Barrel Cactus', 'Christmas Cactus', 'Golden Barrel',  // Cacti
+    'Cholla', 'Pincushion Cactus', 'Bishop’s Cap', 'Organ Pipe Cactus'
+];
+
+
+
+//sentance 
+function toSentenceCase(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+function levenshte_in_Distance(a, b) {
+    const matrix = [];
+
+    // Create an empty matrix
+    for (let i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+    }
+    for (let j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
+    }
+
+    // Fill the matrix
+    for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+            if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j - 1] + 1, // substitution
+                    Math.min(
+                        matrix[i][j - 1] + 1, // insertion
+                        matrix[i - 1][j] + 1 // deletion
+                    )
+                );
+            }
+        }
+    }
+    return matrix[b.length][a.length];
+}
+
+function findClosestMatch(inputName, validNames) {
+    let closestMatch = null;
+    let lowestDistance = Infinity;
+
+    validNames.forEach(validName => {
+        const distance = levenshte_in_Distance(inputName.toLowerCase(), validName.toLowerCase());
+        if (distance < lowestDistance) {
+            lowestDistance = distance;
+            closestMatch = validName;
+        }
+    });
+
+    return closestMatch;
+}
+
+// Usage in addPlant function
 
 // Function to add a new plant
 function addPlant() {
-    let plantName = document.getElementById('plantName').value;
-    let plantType = document.getElementById('plantType').value;
-    let plantedDate = document.getElementById('plantedDate').value;
-    let soilType = document.getElementById('soilType').value;
-    let sunExposure = document.getElementById('sunExposure').value;
-    let wateringFrequency = document.getElementById('wateringFrequency').value;
-    
+    let plantName = document.getElementById('plantName').value.trim();
+    let plantType = document.getElementById('plantType').value.trim();
+    let plantedDate = document.getElementById('plantedDate').value.trim();
+    let soilType = document.getElementById('soilType').value.trim();
+    let sunExposure = document.getElementById('sunExposure').value.trim();
+    let wateringFrequency = document.getElementById('wateringFrequency').value.trim();
+
+    // Check for empty inputs
+    if (!plantName || !plantType || !plantedDate || !soilType || !sunExposure || !wateringFrequency) {
+        alert('Please fill in all fields');
+        return; // Exit the function if any field is empty
+    }
+
+    plantName = findClosestMatch(plantName, validPlantNames);
+
+    // Convert plant name to sentence case
+    plantName = toSentenceCase(plantName);
+
+    // Encrypt the input values
     plantName = encrypt(plantName, passphrase);
     plantType = encrypt(plantType, passphrase);
     plantedDate = encrypt(plantedDate, passphrase);
     soilType = encrypt(soilType, passphrase);
     sunExposure = encrypt(sunExposure, passphrase);
     wateringFrequency = encrypt(wateringFrequency, passphrase);
-    
-    if (plantName && plantType && plantedDate && soilType && sunExposure && wateringFrequency) {
-        db.collection('plants').add({
-            plantName,
-            plantType,
-            plantedDate,
-            soilType,
-            sunExposure,
-            wateringFrequency,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        })
-        .then(() => {
-            console.log("Plant added successfully");
-            document.getElementById('addPlantForm').reset();
-            fetchAndPopulatePlants();
-        })
-        .catch((error) => {
-            console.error("Error adding plant: ", error);
-        });
-    } else {
-        alert('Please fill in all fields');
-    }
+
+    // Add the plant data to the Firestore database
+    db.collection('plants').add({
+        plantName,
+        plantType,
+        plantedDate,
+        soilType,
+        sunExposure,
+        wateringFrequency,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(() => {
+        console.log("Plant added successfully");
+        document.getElementById('addPlantForm').reset();
+        fetchAndPopulatePlants();
+    })
+    .catch((error) => {
+        console.error("Error adding plant: ", error);
+    });
 }
 
 // Function to fetch and populate plants

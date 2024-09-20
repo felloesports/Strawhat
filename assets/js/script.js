@@ -212,16 +212,6 @@ function scrollToTop() {
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
-// sentence for random
-const sentences = [
-  "Web Developer.",
-  "Video Editor.",
-  "Professional Programmer.",
-  "Computer Engineer"
-];
-
-// typewriter intro
-const typewriterElement = document.getElementById('typewriter');
 
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
